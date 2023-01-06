@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+/******************************************************************************
+ *     Copyright (C) by ETHZ/SED                                              *
+ *                                                                            *
+ *   This program is free software: you can redistribute it and/or modify     *
+ *   it under the terms of the GNU Affero General Public License as published *
+ *   by the Free Software Foundation, either version 3 of the License, or     *
+ *   (at your option) any later version.                                      *
+ *                                                                            *
+ *   This program is distributed in the hope that it will be useful,          *
+ *   but WITHOUT ANY WARRANTY; without even the implied warranty of           *
+ *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the            *
+ *   GNU Affero General Public License for more details.                      *
+ *                                                                            *
+ *                                                                            *
+ *   @author: Billy Burgoa Rosso                                              *
+ *   Independent Consultant       <billyburgoa@gmail.com>                     *
+ *                                                                            *
+ ******************************************************************************/
+-->
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/textView5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:autoSizeTextType="uniform"
+            android:text="@string/point_of_interest_title"
+            android:textAlignment="center"
+            android:textColor="#2979FF"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/textView7"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:autoSizeTextType="uniform"
+            android:background="#F1F1F1"
+            android:text="@string/point_of_interest_text"
+            android:textColor="#000000"
+            android:textSize="16sp" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" >
+
+            <fragment
+                android:id="@+id/map_poi"
+                android:name="com.google.android.gms.maps.SupportMapFragment"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.0"
+                tools:context=".mapactivity.MapActivity"
+                tools:layout="@layout/dummylayout"/>
+
+            <Button
+                android:id="@+id/poi_save"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="#3D5AFE"
+                android:text="Guardar"
+                android:textColor="#FFFFFF"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/map_poi"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/map_poi"
+                app:layout_constraintVertical_bias="0.93" />
+
+            <Button
+                android:id="@+id/poi_cancel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="#FFFFFF"
+                android:text="Después"
+                app:layout_constraintBottom_toBottomOf="@+id/poi_save"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/poi_save"
+                app:layout_constraintTop_toTopOf="@+id/poi_save" />
+
+            <ImageView
+                android:id="@+id/imageView3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/map_poi"
+                app:layout_constraintTop_toTopOf="@+id/map_poi"
+                app:srcCompat="@android:drawable/ic_menu_mylocation" />
+
+            <Button
+                android:id="@+id/poi_addbtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="#FF6D00"
+                android:text="agregar"
+                android:textColor="#FFFFFF"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/map_poi"
+                app:layout_constraintStart_toStartOf="@+id/map_poi"
+                app:layout_constraintTop_toBottomOf="@+id/imageView3"
+                app:layout_constraintVertical_bias="0.01999998" />
+
+            <Button
+                android:id="@+id/poi_clear"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:enabled="false"
+                android:text="Borrar"
+                android:visibility="visible"
+                app:layout_constraintBottom_toBottomOf="@+id/poi_save"
+                app:layout_constraintEnd_toStartOf="@+id/poi_save"
+                app:layout_constraintStart_toStartOf="@+id/map_poi"
+                app:layout_constraintTop_toTopOf="@+id/poi_save" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

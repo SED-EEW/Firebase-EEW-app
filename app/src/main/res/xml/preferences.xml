@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+/******************************************************************************
+ *     Copyright (C) by ETHZ/SED                                              *
+ *                                                                            *
+ *   This program is free software: you can redistribute it and/or modify     *
+ *   it under the terms of the GNU Affero General Public License as published *
+ *   by the Free Software Foundation, either version 3 of the License, or     *
+ *   (at your option) any later version.                                      *
+ *                                                                            *
+ *   This program is distributed in the hope that it will be useful,          *
+ *   but WITHOUT ANY WARRANTY; without even the implied warranty of           *
+ *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the            *
+ *   GNU Affero General Public License for more details.                      *
+ *                                                                            *
+ *                                                                            *
+ *   @author: Billy Burgoa Rosso                                              *
+ *   Independent Consultant       <billyburgoa@gmail.com>                     *
+ *                                                                            *
+ ******************************************************************************/
+-->
+<PreferenceScreen
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!--below line is to create preference category-->
+    <PreferenceCategory android:title="Alertas por Intensidad de Mercalli"
+        android:summary="Con Ubicación o Puntos de Interés">
+        <SwitchPreference
+            android:defaultValue="true"
+            android:key="prefAlertsSwitch"
+            android:title="Alertas por Intensidad"
+            android:summaryOn="Habilitado"
+            android:summaryOff="Deshabilitado"/>
+        <EditTextPreference
+            android:defaultValue="4"
+            android:key="prefAlertMinIntensity"
+            android:inputType="number"
+            android:digits="0123456789"
+            android:summary="Establecer Intensidad Mínima para alertar"
+            android:title="Intensidad Mínima de Mercalli [MM]"/>
+    </PreferenceCategory>
+    <PreferenceCategory android:title="Notificaciones"
+        android:summary="En función a la magnitud y otros parámetros">
+        <SwitchPreference
+            android:defaultValue="false"
+            android:key="prefNotifSwitch"
+            android:title="Notificaciones"
+            android:summaryOn="Habilitado"
+            android:summaryOff="Deshabilitado"/>
+        <EditTextPreference
+            android:defaultValue="0.0"
+            android:key="prefMinMagNoti"
+            android:inputType="numberDecimal"
+            android:digits="0123456789"
+            android:summary="Establecer la magnitud mínima de notificación"
+            android:title="Magnitud Mínima" />
+        <EditTextPreference
+            android:defaultValue="800"
+            android:key="prefMaxDepthNoti"
+            android:inputType="numberDecimal"
+            android:summary="Establecer la profundidad máxima [km]"
+            android:title="Máxima Profundidad [km]"/>
+
+        <ListPreference
+            android:defaultValue="all"
+            android:dialogTitle="Centro Sismológico"
+            android:icon="@mipmap/ic_attac"
+            android:entries="@array/pref_agencies"
+            android:entryValues="@array/pref_agency_values"
+            android:key="prefNotiAgency"
+            android:summary="Agencia que reporta las soluciones automáticas"
+            android:title="Servicio de Alerta Temprana Primario" />
+    </PreferenceCategory>
+        <!--on below line we are creating a switch preference
+            default value is use to set switch on or off
+            key is use to set key
+            title is use to add title to our switch-->
+        <!--this switch preference option is to remind for a bed time-->
+
+    <PreferenceCategory android:title="Filtro de Datos">
+        <!--below switch preference is
+            use for mobile data usage-->
+        <SwitchPreference
+            android:defaultValue="false"
+            android:key="prefFilterSwitch"
+            android:summaryOn="Habilitado"
+            android:summaryOff="Deshabilitado"
+            android:title="Filtrar Datos" />
+
+        <EditTextPreference
+            android:defaultValue="0.0"
+            android:key="prefFiltMinMag"
+            android:inputType="numberDecimal"
+            android:summary="Establecer la magnitud mínima"
+            android:title="Magnitud Mínima"/>
+
+        <EditTextPreference
+            android:defaultValue="800"
+            android:key="prefFiltMaxDepth"
+            android:inputType="numberDecimal"
+            android:digits="0123456789"
+            android:summary="Establecer la profundidad máxima [km]"
+            android:title="Profundidad Máxima [km]"/>
+
+        <EditTextPreference
+            android:defaultValue="30"
+            android:key="prefFiltMaxDaysAgo"
+            android:inputType="numberDecimal"
+            android:digits="0123456789"
+            android:summary="Días atrás [días]"
+            android:title="Número máximo de días atrás"/>
+        <ListPreference
+            android:defaultValue="all"
+            android:dialogTitle="Centro Sismológico"
+            android:entries="@array/pref_agencies"
+            android:entryValues="@array/pref_agency_values"
+            android:key="prefFiltAgency"
+            android:summary="Agencia que reporta las soluciones automáticas"
+            android:title="Servicio de Alerta Temprana" />
+
+    </PreferenceCategory>
+    <PreferenceCategory android:title="UTC o Local">
+    <!--below switch preference is
+        use for mobile data usage-->
+    <SwitchPreference
+        android:defaultValue="false"
+        android:key="prefUTCSwitch"
+        android:summaryOn="Habilitado"
+        android:summaryOff="Deshabilitado"
+        android:title="Fecha y Hora en UTC" />
+    </PreferenceCategory>
+
+</PreferenceScreen>

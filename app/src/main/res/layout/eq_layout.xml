@@ -1,0 +1,560 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+/******************************************************************************
+ *     Copyright (C) by ETHZ/SED                                              *
+ *                                                                            *
+ *   This program is free software: you can redistribute it and/or modify     *
+ *   it under the terms of the GNU Affero General Public License as published *
+ *   by the Free Software Foundation, either version 3 of the License, or     *
+ *   (at your option) any later version.                                      *
+ *                                                                            *
+ *   This program is distributed in the hope that it will be useful,          *
+ *   but WITHOUT ANY WARRANTY; without even the implied warranty of           *
+ *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the            *
+ *   GNU Affero General Public License for more details.                      *
+ *                                                                            *
+ *                                                                            *
+ *   @author: Billy Burgoa Rosso                                              *
+ *   Independent Consultant       <billyburgoa@gmail.com>                     *
+ *                                                                            *
+ ******************************************************************************/
+-->
+<androidx.constraintlayout.widget.ConstraintLayout  xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#090B1B">
+
+    <LinearLayout
+        android:id="@+id/linearLayout4"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TableLayout
+            android:id="@+id/tableLayout2"
+            android:layout_width="match_parent"
+            android:layout_height="193dp"
+            android:layout_weight="1"
+            android:background="#090B1B">
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center">
+
+                <TextView
+                    android:id="@+id/textView27"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="RESUMEN"
+                    android:textColor="#FFFFFF"
+                    android:textSize="12sp"
+                    android:textStyle="bold"
+                    app:autoSizeTextType="uniform" />
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="0.7">
+
+                <TextView
+                    android:id="@+id/EqActMagTitle"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="Magnitud"
+                    android:textColor="#FFFFFF"
+                    app:autoSizeTextType="uniform" />
+
+                <TextView
+                    android:id="@+id/EqActDepthTitle"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="Profundidad"
+                    android:textColor="#FFFFFF"
+                    app:autoSizeTextType="uniform" />
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1.5">
+
+                <TextView
+                    android:id="@+id/EqActMagVal"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="0.0"
+                    android:textColor="#FFFFFF"
+                    android:textStyle="bold"
+                    app:autoSizeTextType="uniform" />
+
+                <TextView
+                    android:id="@+id/EqActDepthVal"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="0.0 km"
+                    android:textColor="#FFFFFF"
+                    app:autoSizeTextType="uniform" />
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="0.8">
+
+                <TextView
+                    android:id="@+id/EqLocationTitle"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="Ubicación"
+                    android:textColor="#FFFFFF"
+                    app:autoSizeTextType="uniform" />
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1.2"
+                android:gravity="center">
+
+                <TextView
+                    android:id="@+id/EqLocationVal"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:text="Ninguna Alerta Recibida"
+                    android:textAlignment="center"
+                    android:textColor="#C8D0FF"
+                    android:textStyle="bold"
+                    app:autoSizeTextType="uniform" />
+            </TableRow>
+        </TableLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="400dp"
+            android:layout_weight="2.">
+
+            <fragment
+                android:id="@+id/eqmap"
+                android:name="com.google.android.gms.maps.SupportMapFragment"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:context=".eqactivity.EqActivity"
+                tools:layout="@layout/dummylayout" />
+
+            <ImageView
+                android:id="@+id/EqImgLogo"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                app:layout_constraintBottom_toBottomOf="@+id/eqmap"
+                app:layout_constraintEnd_toEndOf="@+id/eqmap"
+                app:layout_constraintHorizontal_bias="0.951"
+                app:layout_constraintStart_toStartOf="@+id/eqmap"
+                app:layout_constraintTop_toTopOf="@+id/eqmap"
+                app:layout_constraintVertical_bias="0.068"
+                app:srcCompat="@mipmap/ic_ovsicori_logo" />
+            <Button
+                android:id="@+id/EqButtonIntRep"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="#C51162"
+                android:capitalize="words"
+                android:text="¿Lo sentiste? Reporta"
+                android:textColor="#FFFFFF"
+                app:layout_constraintBottom_toBottomOf="@+id/eqmap"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/eqmap"
+                app:layout_constraintVertical_bias="0.95" />
+
+            <LinearLayout
+                android:id="@+id/linearLayout2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintBottom_toBottomOf="@+id/eqmap"
+                app:layout_constraintEnd_toEndOf="@+id/eqmap"
+                app:layout_constraintHorizontal_bias="0.05"
+                app:layout_constraintStart_toStartOf="@+id/eqmap"
+                app:layout_constraintTop_toTopOf="@+id/eqmap"
+                app:layout_constraintVertical_bias="0.060000002">
+
+                <TextView
+                    android:id="@+id/EqIntensityText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#FFFFFF"
+                    android:text="Intensidad Estimada"
+                    android:textAlignment="center"
+                    android:textColor="#000000"
+                    android:textStyle="bold"
+                    app:autoSizeTextType="uniform" />
+
+                <TextView
+                    android:id="@+id/EqIntensityVal"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="#00B8D4"
+                    android:text="III. Débil"
+                    android:textAlignment="center"
+                    android:textColor="#000000"
+                    android:textSize="20sp"
+                    app:autoSizeTextType="uniform" />
+            </LinearLayout>
+
+            <ImageButton
+                android:id="@+id/EqButtonLocation"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="#00FFFFFF"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/eqmap"
+                app:layout_constraintHorizontal_bias="0.01"
+                app:layout_constraintStart_toStartOf="@+id/eqmap"
+                app:layout_constraintTop_toBottomOf="@+id/linearLayout2"
+                app:layout_constraintVertical_bias="0.9"
+                app:srcCompat="@android:drawable/ic_menu_mylocation" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <TableLayout
+                    android:id="@+id/tableLayout3"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1">
+
+                    <TableRow
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:background="#FFFFFF">
+
+                        <TextView
+                            android:id="@+id/EqTimeSpanValue"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center|left"
+                            android:text="TextView"
+                            android:textColor="#011067"
+                            android:textSize="14sp"
+                            android:textStyle="bold"
+                            app:autoSizeTextType="uniform" />
+                    </TableRow>
+
+                    <TableRow
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="#E6E6E6">
+
+                        <TextView
+                            android:id="@+id/EqDateTimeTitle"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="0.6"
+                            android:gravity="center"
+                            android:text="Fecha y Hora"
+                            android:textColor="#000000"
+                            android:textSize="14sp"
+                            android:textStyle="bold"
+                            app:autoSizeTextType="uniform" />
+
+                        <TextView
+                            android:id="@+id/EqDateTimeValue"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:text="TextView"
+                            android:textColor="#5E5E5E"
+                            android:textSize="14sp"
+                            app:autoSizeTextType="uniform" />
+                    </TableRow>
+
+                    <TableRow
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="#FFFFFF">
+
+                        <TextView
+                            android:id="@+id/textView22"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="0.6"
+                            android:gravity="center"
+                            android:text="Latitud"
+                            android:textColor="#000000"
+                            android:textSize="14sp"
+                            android:textStyle="bold"
+                            app:autoSizeTextType="uniform" />
+
+                        <TextView
+                            android:id="@+id/EqLatValue"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:text="TextView"
+                            android:textColor="#5E5E5E"
+                            android:textSize="14sp"
+                            app:autoSizeTextType="uniform" />
+                    </TableRow>
+
+                    <TableRow
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="#E6E6E6">
+
+                        <TextView
+                            android:id="@+id/textView26"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="0.6"
+                            android:gravity="center"
+                            android:text="Longitud"
+                            android:textColor="#000000"
+                            android:textSize="14sp"
+                            android:textStyle="bold"
+                            app:autoSizeTextType="uniform" />
+
+                        <TextView
+                            android:id="@+id/EqLonValue"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:text="TextView"
+                            android:textColor="#5E5E5E"
+                            android:textSize="14sp"
+                            app:autoSizeTextType="uniform" />
+                    </TableRow>
+
+                    <TableRow
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="#FFFFFF">
+
+                        <TextView
+                            android:id="@+id/textView11"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="0.6"
+                            android:gravity="center"
+                            android:text="Agencia"
+                            android:textColor="#000000"
+                            android:textSize="14sp"
+                            android:textStyle="bold"
+                            app:autoSizeTextType="uniform" />
+
+                        <TextView
+                            android:id="@+id/EqAgencyValue"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:text="TextView"
+                            android:textColor="#5E5E5E"
+                            android:textSize="14sp"
+                            app:autoSizeTextType="uniform" />
+                    </TableRow>
+
+                    <TableRow
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:background="#E6E6E6">
+
+                        <TextView
+                            android:id="@+id/textView14"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="0.6"
+                            android:gravity="center"
+                            android:text="Tipo de Mensaje"
+                            android:textColor="#000000"
+                            android:textSize="14sp"
+                            android:textStyle="bold"
+                            app:autoSizeTextType="uniform" />
+
+                        <TextView
+                            android:id="@+id/EqMsgTypeValue"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:text="TextView"
+                            android:textColor="#5E5E5E"
+                            android:textSize="14sp"
+                            app:autoSizeTextType="uniform" />
+                    </TableRow>
+
+                    <TableRow
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="#FFFFFF">
+
+                        <TextView
+                            android:id="@+id/textView19"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="0.6"
+                            android:gravity="center"
+                            android:text="Estado"
+                            android:textColor="#000000"
+                            android:textSize="14sp"
+                            android:textStyle="bold"
+                            app:autoSizeTextType="uniform" />
+
+                        <TextView
+                            android:id="@+id/EqStatusValue"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:text="TextView"
+                            android:textColor="#5E5E5E"
+                            android:textSize="14sp"
+                            app:autoSizeTextType="uniform" />
+                    </TableRow>
+
+                    <TableRow
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:background="#E6E6E6">
+
+                        <TextView
+                            android:id="@+id/textView20"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="0.6"
+                            android:gravity="center"
+                            android:text="ID del Evento"
+                            android:textColor="#000000"
+                            android:textSize="14sp"
+                            android:textStyle="bold"
+                            app:autoSizeTextType="uniform" />
+
+                        <TextView
+                            android:id="@+id/EqEvtIdValue"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:text="TextView"
+                            android:textColor="#5E5E5E"
+                            android:textSize="14sp"
+                            app:autoSizeTextType="uniform" />
+                    </TableRow>
+
+                    <TableRow
+                        android:id="@+id/EqUpdatesRow"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:background="#FFFFFF">
+
+                        <TextView
+                            android:id="@+id/textView13"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="0.6"
+                            android:gravity="center"
+                            android:text="Actualizaciones"
+                            android:textColor="#000000"
+                            android:textSize="14sp"
+                            android:textStyle="bold"
+                            app:autoSizeTextType="uniform" />
+
+                        <TextView
+                            android:id="@+id/textButtonUpdates"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:text="5 (click para ver todas)"
+                            android:textColor="#304FFE"
+                            android:textSize="14sp"
+                            android:textStyle="bold"
+                            app:autoSizeTextType="uniform" />
+                    </TableRow>
+
+                    <TableRow
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="#E6E6E6">
+
+                        <TextView
+                            android:id="@+id/textView21"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="0.6"
+                            android:gravity="center"
+                            android:text="Delay de Notif."
+                            android:textColor="#000000"
+                            android:textSize="14sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/EqDelayValue"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:text="TextView"
+                            android:textColor="#5E5E5E"
+                            android:textSize="14sp"
+                            app:autoSizeTextType="uniform" />
+                    </TableRow>
+
+                </TableLayout>
+            </LinearLayout>
+        </ScrollView>
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

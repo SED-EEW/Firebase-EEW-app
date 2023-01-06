@@ -1,0 +1,13 @@
+V0.5.0
+- Added TrueTime -> NTP client for Android. Calculate the date and time "now" impervious to manual changes to device clock time.
+- Added a Foreground service to obtain the user's location in background (if user gives the permissions)
+- Requesting permission for removing the app from the app optimization battery to avoid missing notifications
+while the app is on battery save mode, or it is not used regularly, etc.
+- Created a new layout to ask the client for Points of Interest (POI). The POIs are used to estimate the MM intensity value
+in case that the device GPS is not enabled (very useful to save battery).
+-Added new layouts for Welcome for the first time using the app and for requesting permissions. The layouts contain
+text to describe and provide information and action buttons.
+- Added the license text description.
+- New layout for alerting purpose with the Drop, Cover and Hold on message. It is created once an EQ event could generate
+an intensity value >= VI on either user's location or POIs (MM VI is Hardcoded and on test).
+- Shorting the class files in package folders according to their functionality and usage.

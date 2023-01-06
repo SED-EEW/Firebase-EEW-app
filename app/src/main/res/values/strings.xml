@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--/////////////////////
+SET BELOW THE APP VERSION
+/////////////////////////-->
+<!DOCTYPE resources [
+    <!ENTITY appversion "V0.5.0">
+    ]>
+<!--/////////////////-->
+
+<resources>
+    <string name="app_name">ATTAC Alerta de Terremotos</string>
+    <string-array name="pref_agencies">
+        <item>Todas</item>
+        <item>OVSICORI-UNA</item>
+        <item>INETER</item>
+        <item>MARN</item>
+        <item>INSIVUMEH</item>
+    </string-array>
+    <string-array name="pref_agency_values">
+        <item>all</item>
+        <item>UNA</item>
+        <item>INETER</item>
+        <item>MARN</item>
+        <item>insivumeh</item>
+    </string-array>
+
+    <string name="location_permission_title">UBICACIÓN APROXIMADA</string>
+    <string name="location_permission_text">
+        La applicación "ATTAC Alerta de Terremotos" <b>necesita la ubicación aproximada en segundo plano</b> para brindarle alertas
+        tempranas de terremotos en el lugar aproximado donde se encuentre.\n
+        Con la ubicación aproximada se asegura que la ubicación real esté dentro de un área de 3 km2 y así respetar su privacidad.\n
+        Si desea compartir entonces acepte esta opción. Una vez aceptado el compartir su ubicación y para
+        tener un buen funcionamiento se recomienda que cuando esté en el díalogo <b>\"Permiso de Ubicación\"</b>,
+        puede seleccionar la opción de <b>\"Permitir todo el tiempo\"</b>.
+    </string>
+    <string name="battery_optimization_title">
+        No Restringir el Uso de Batería
+    </string>
+    <string name="battery_optimization_text">
+        Para recibir notificaciones de las alertas tempranas o notificación rápidas de sismos <b>permita que la app DEJE DE OPTIMIZAR el uso de batería</b>. De este modo se disminuye la posibilidad de que los mensajes de alertas
+        no sean recibidos en su dispositivo.\n<b>La aplicación consume muy poca batería así como otros recursos como RAM, CPU y espacio</b>. Está siempre a la espera de recibir las notificaciones con las alertas.
+    </string>
+    <string name="point_of_interest_title">
+        LUGARES DE INTERÉS
+    </string>
+
+    <string name="point_of_interest_text">
+        En caso de que el <b>GPS no esté disponible</b> se usará los Lugares de Interés (POI) para estimar la posible intensidad y alertar.
+        <b>Mueva, haga zoom</b> el mapa y busque la ubicación deseada con el <b>puntero</b> del centro del mapa. <b>Agregue</b> de 1 a 4 lugares de interés. <b>Guarde</b> cuando haya seleccionado los lugares.\n
+        <b>Los puntos de interés pueden ser actualizados o cambiados en cualquier momento</b>.
+    </string>
+
+    <string name="point_of_interest_nameofpoi">
+        Agregar un nombre que identifique a este punto.\n
+        Por ejemplo: Casa, Trabajo, Oficina, etc.
+    </string>
+    <string name="point_of_interest_hint">
+        Ej.: Trabajo
+    </string>
+
+    <string name="point_of_interest_toast_lacking_name">
+        Por favor, ingrese un texto válido.
+    </string>
+
+    <string name="point_of_interest_title_menu">
+        Puntos de Interés
+    </string>
+
+    <string name="welcome_title">
+        BIENVENIDO A LA APLICACIÓN DE ALERTA DE TERREMOTOS DE CENTROAMERICA
+    </string>
+    <string name="welcome_text_about">
+        Los <b>Sistemas de Alerta Temprana de Terremotos</b> proveen a los residentes de algunos países algunos segundos de alerta antes que empiece el temblor en la ubicación donde se encuentren o residen. El propósito de estas alertas es de ayudar, aquellos que las reciben por varios medios entre los cuales se incluye los dispositivos móviles inteligentes, y puedan tomar acciones para evitar daños o muerte en caso de terremotos fuertes o destructivos. Estos sistemas podrían también servir como sistema de apagado para proteeger propiedades y también a las personas.
+    </string>
+    <string name="welcome_text">
+       Esta aplicación móvil recibe notificaciones de alertas tempranas de terremotos o notificaciones rápidas con información de importancia.\nLos Centros Sismológicos que brindan esta información son:\n
+        \n
+          - MARN, El Salvador.\n
+          - OVSICORI-UNA, Costa Rica.\n
+          - INETER, Nicaragua.\n
+          - INSIVUMEH, Guatemala.\n
+        \n
+        Para su óptimo funcionamiento se le <b>solicitarán algunos permisos importantes</b>.
+    </string>
+    <string name="welcome_button_text">
+        Continuar
+    </string>
+
+    <!-- Notification categories names -->
+    <string name="alert_noti_voice">Alertas de Voz</string>
+    <string name="alert_noti_sound">Alertas con Sonido</string>
+    <string name="alert_noti_silent">Alertas Silenciosas</string>
+    <string name="foreground_notification_chan">Notificación en Primer Plano</string>
+
+    <!-- ABOUT THE APP -->
+    <string name="aboutapp" formatted="false"><![CDATA[
+    <h2>ATTAC Alerta Temprana de Terremotos.</h2>
+        <p style="text-align: justify;">Alerta Temprana de Terremotos en América Central (ATTAC) es un proyecto conjunto de los Centros Sismológicos de:</p>
+        <ul style="text-align: justify;">
+            <li>INETER, Nicaragua.</li>
+            <li>OVSICORI-UNA, Costa Rica.</li>
+            <li>MARN, El Salvador.</li>
+            <li>INSIVUMEH, Guatemala.</li>
+            <li>Swiss Seismological Service, Suiza.</li>
+        </ul>
+    <p style="text-align: justify;">Esta Aplicación Móvil tiene como fin presentar las alertas emitidas por estos centros sismológicos en una primera etapa de PRUEBA.</p>
+    <p style="text-align: justify;">La información presentada podría contener errores o tener algún retrazo en ser recibida o definitivamente no ser recibida por la App.</p>
+    <p style="text-align: justify;">Durante la etapa de prueba la app enviará datos relacionados a tiempos de recepción de las alertas y otros parámetros para conocer el funcionamiento de la misma y se puedan hacer mejoras. No se enviará ningún dato personal (imagen ni texto) o que no esté relacionado con la app y su contexto.</p>
+    <p style="text-align: justify;">Para reportar la Intensidad (lo que sintió y/o vio) se le pedirá compartir su ubicación. Importante indicar que la ubicacion que se usa es la <b>aproximada</b> y no es la precisa.</p>
+    <p style="text-align: justify;">Créditos a "European-Mediterranean Seismological Centre" (EMSC) por los Pictogramas que describen el valor de Intensidad.</p>
+    <p style="text-align: justify;">Consultas y sugerencias a billyburgoa@gmail.com</p>
+    <p style="text-align: left;"> Versión: </p>
+    ]]>
+        &appversion;
+    </string>
+
+    <!-- EQ Alert strings for Alert.xml layout-->
+    <string name="alert_hl_strongEQ">AGÁCHATE, PROTÉGETE Y ESPERA</string>
+    <string name="alert_magtitle">
+        Posible Magnitud
+    </string>
+    <string name="alert_intesitytitle">
+        Intensidad MM estimada en
+    </string>
+    <string name="alert_distancetitle">
+        de
+    </string>
+    <string name="alert_depthtitle">
+        Profundidad
+    </string>
+    <string name="alert_sourcetitle">Fuente:</string>
+    <string name="alert_button_title">Ver mas</string>
+
+    <!-- GENERAL TEXT -->
+    <string name="yourlocation">su ubicación</string>
+    <string name="nearlocation">lugar cercano</string>
+    <string name="pointofinterest">punto de interés</string>
+    <string name="to">a</string>
+    <string name="of">de</string>
+    <string name="to_the">al</string>
+    <string name="source">Fuente</string>
+    <string name="eqalert">Alerta de Terremoto</string>
+    <string name="dropcoverholdon">AGÁCHATE, CÚBRETE Y ESPERA!</string>
+    <string name="eventdoesnotexist">El Evento No Existe</string>
+    <string name="newalertreceived">Nueva Alerta Recibida</string>
+    <string name="projectTitle">ATTAC Alerta de Terremotos</string>
+
+
+</resources>

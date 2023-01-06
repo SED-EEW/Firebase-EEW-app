@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+/******************************************************************************
+ *     Copyright (C) by ETHZ/SED                                              *
+ *                                                                            *
+ *   This program is free software: you can redistribute it and/or modify     *
+ *   it under the terms of the GNU Affero General Public License as published *
+ *   by the Free Software Foundation, either version 3 of the License, or     *
+ *   (at your option) any later version.                                      *
+ *                                                                            *
+ *   This program is distributed in the hope that it will be useful,          *
+ *   but WITHOUT ANY WARRANTY; without even the implied warranty of           *
+ *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the            *
+ *   GNU Affero General Public License for more details.                      *
+ *                                                                            *
+ *                                                                            *
+ *   @author: Billy Burgoa Rosso                                              *
+ *   Independent Consultant       <billyburgoa@gmail.com>                     *
+ *                                                                            *
+ ******************************************************************************/
+-->
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/EqUpNumUpVal"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="Actualización No: 1"
+            android:textAlignment="center"
+            android:textColor="#3D4580"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:autoSizeTextType="uniform" />
+
+        <TextView
+            android:id="@+id/EqUpMagVal"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="#F4F4F4"
+            android:text="Magnitud: 4.5"
+            android:textColor="#FFFFFF"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:autoSizeTextType="uniform" />
+
+        <TextView
+            android:id="@+id/EqUpLocationVal"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:ellipsize="marquee"
+            android:marqueeRepeatLimit="marquee_forever"
+            android:scrollHorizontally="true"
+            android:singleLine="true"
+            android:text="25 km al Sur de Guanacaste, Costa Rica"
+            android:textColor="#283593"
+            android:textSize="16sp"
+            app:autoSizeTextType="uniform" />
+
+        <TextView
+            android:id="@+id/EqUpDateTimeVal"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="#F4F4F4"
+            android:gravity="left"
+            android:text="Fecha y Hora: 2021-03-22 16:30:00 (Local)"
+            android:textColor="#3D4580"
+            android:textSize="16sp"
+            app:autoSizeTextType="uniform" />
+
+        <TextView
+            android:id="@+id/EqUpDepthVal"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="Profundidad: 35 km"
+            android:textColor="#3D4580"
+            android:textSize="16sp"
+            app:autoSizeTextType="uniform" />
+
+        <TextView
+            android:id="@+id/EqUpLatLonVal"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="#F4F4F4"
+            android:text="Ubicación: Lat: 10.25, Lon: -83.45"
+            android:textColor="#3D4580"
+            android:textSize="16sp"
+            app:autoSizeTextType="uniform" />
+
+        <TextView
+            android:id="@+id/EqUpSentVal"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="Mensaje enviado: 2021-03-22 16:40:50 (Local)"
+            android:textColor="#3D4580"
+            android:textSize="16sp"
+            app:autoSizeTextType="uniform" />
+
+        <TextView
+            android:id="@+id/EqUpRecVal"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="#F4F4F4"
+            android:text="Mensaje enviado: 2021-03-22 16:40:52 (Local)"
+            android:textColor="#3D4580"
+            android:textSize="16sp"
+            app:autoSizeTextType="uniform" />
+
+        <TextView
+            android:id="@+id/EqUpDelayVal"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="Delay: 2 s"
+            android:textColor="#3D4580"
+            android:textSize="16sp"
+            app:autoSizeTextType="uniform" />
+
+        <TextView
+            android:id="@+id/EqUpLikeliVal"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="#F4F4F4"
+            android:text="Likelihood: 0.99"
+            android:textColor="#3D4580"
+            android:textSize="16sp"
+            app:autoSizeTextType="uniform" />
+
+        <TextView
+            android:id="@+id/EqUpNumStaVal"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="Número de estaciones: 15"
+            android:textColor="#3D4580"
+            android:textSize="16sp"
+            app:autoSizeTextType="uniform" />
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,324 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+/******************************************************************************
+ *     Copyright (C) by ETHZ/SED                                              *
+ *                                                                            *
+ *   This program is free software: you can redistribute it and/or modify     *
+ *   it under the terms of the GNU Affero General Public License as published *
+ *   by the Free Software Foundation, either version 3 of the License, or     *
+ *   (at your option) any later version.                                      *
+ *                                                                            *
+ *   This program is distributed in the hope that it will be useful,          *
+ *   but WITHOUT ANY WARRANTY; without even the implied warranty of           *
+ *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the            *
+ *   GNU Affero General Public License for more details.                      *
+ *                                                                            *
+ *                                                                            *
+ *   @author: Billy Burgoa Rosso                                              *
+ *   Independent Consultant       <billyburgoa@gmail.com>                     *
+ *                                                                            *
+ ******************************************************************************/
+-->
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:id="@+id/linearLayout5"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/textView24"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="¿Qué sentiste y/o viste?"
+            android:textAlignment="center"
+            android:textColor="#000000"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/textView29"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Selecciona una imagen"
+            android:textColor="#000000"
+            app:autoSizeTextType="uniform" />
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="731dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout5">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="1dp"
+            android:layout_marginTop="1dp"
+            android:layout_marginEnd="1dp"
+            android:layout_marginBottom="1dp"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"></LinearLayout>
+
+            <TableLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <ImageView
+                android:id="@+id/IntRepOne"
+                android:layout_width="match_parent"
+                android:layout_height="210dp"
+                android:background="#EDEDED"
+                app:srcCompat="@drawable/i" />
+
+            <TextView
+                android:id="@+id/textView10"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="#EDEDED"
+                android:text="I. No Sentido"
+                android:textAlignment="center"
+                android:textColor="#000000"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:autoSizeTextType="uniform" />
+
+            <ImageView
+                android:id="@+id/IntRepTwo"
+                android:layout_width="match_parent"
+                android:layout_height="210dp"
+                android:background="#BFCCFF"
+                app:srcCompat="@drawable/ii" />
+
+            <TextView
+                android:id="@+id/textView16"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="#BFCCFF"
+                android:text="II. Muy Débil"
+                android:textAlignment="center"
+                android:textColor="#000000"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:autoSizeTextType="uniform" />
+
+            <ImageView
+                android:id="@+id/IntRepThree"
+                android:layout_width="match_parent"
+                android:layout_height="210dp"
+                android:background="#9999FF"
+                app:srcCompat="@drawable/iii" />
+
+            <TextView
+                android:id="@+id/textView28"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="#9999FF"
+                android:text="III. Leve"
+                android:textAlignment="center"
+                android:textColor="#000000"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:autoSizeTextType="uniform" />
+
+            <ImageView
+                android:id="@+id/IntRepFour"
+                android:layout_width="match_parent"
+                android:layout_height="210dp"
+                android:background="#80FFFF"
+                app:srcCompat="@drawable/iv" />
+
+            <TextView
+                android:id="@+id/textView30"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="#80FFFF"
+                android:text="IV. Moderado"
+                android:textAlignment="center"
+                android:textColor="#000000"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:autoSizeTextType="uniform" />
+
+            <ImageView
+                android:id="@+id/IntRepFive"
+                android:layout_width="match_parent"
+                android:layout_height="210dp"
+                android:background="#7DF894"
+                app:srcCompat="@drawable/v" />
+
+            <TextView
+                android:id="@+id/textView47"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="#7DF894"
+                android:text="V. Poco Fuerte"
+                android:textAlignment="center"
+                android:textColor="#000000"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:autoSizeTextType="uniform" />
+
+            <ImageView
+                android:id="@+id/IntRepSix"
+                android:layout_width="match_parent"
+                android:layout_height="210dp"
+                android:background="#FFFF00"
+                app:srcCompat="@drawable/vi" />
+
+            <TextView
+                android:id="@+id/textView48"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="#FFFF00"
+                android:text="VI. Fuerte"
+                android:textAlignment="center"
+                android:textColor="#000000"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:autoSizeTextType="uniform" />
+
+            <ImageView
+                android:id="@+id/IntRepSeven"
+                android:layout_width="match_parent"
+                android:layout_height="210dp"
+                android:background="#FFC800"
+                app:srcCompat="@drawable/vii" />
+
+            <TextView
+                android:id="@+id/textView49"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="#FFC800"
+                android:text="VII. Muy Fuerte"
+                android:textAlignment="center"
+                android:textColor="#000000"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:autoSizeTextType="uniform" />
+
+            <ImageView
+                android:id="@+id/IntRepEight"
+                android:layout_width="match_parent"
+                android:layout_height="210dp"
+                android:background="#FF9100"
+                app:srcCompat="@drawable/viii" />
+
+            <TextView
+                android:id="@+id/textView50"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="#FF9100"
+                android:text="VIII. Destructivo"
+                android:textAlignment="center"
+                android:textColor="#000000"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:autoSizeTextType="uniform" />
+
+            <ImageView
+                android:id="@+id/IntRepNine"
+                android:layout_width="match_parent"
+                android:layout_height="210dp"
+                android:background="#FF0000"
+                app:srcCompat="@drawable/ix" />
+
+            <TextView
+                android:id="@+id/textView51"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="#FF0000"
+                android:text="IX. Muy Destructivo"
+                android:textAlignment="center"
+                android:textColor="#FFFFFF"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:autoSizeTextType="uniform" />
+
+            <ImageView
+                android:id="@+id/IntRepTen"
+                android:layout_width="match_parent"
+                android:layout_height="210dp"
+                android:background="#C80000"
+                app:srcCompat="@drawable/x" />
+
+            <TextView
+                android:id="@+id/textView52"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="#C80000"
+                android:text="X. Desastroso"
+                android:textAlignment="center"
+                android:textColor="#FFFFFF"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:autoSizeTextType="uniform" />
+
+            <ImageView
+                android:id="@+id/IntRepEleven"
+                android:layout_width="match_parent"
+                android:layout_height="210dp"
+                android:background="#800000"
+                app:srcCompat="@drawable/xi" />
+
+            <TextView
+                android:id="@+id/textView53"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="#800000"
+                android:text="XI. Muy Desastroso"
+                android:textAlignment="center"
+                android:textColor="#FFFFFF"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:autoSizeTextType="uniform" />
+
+            <ImageView
+                android:id="@+id/IntRepTwelve"
+                android:layout_width="match_parent"
+                android:layout_height="210dp"
+                android:background="#000000"
+                app:srcCompat="@drawable/xii" />
+
+            <TextView
+                android:id="@+id/textView54"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="#000000"
+                android:text="XII. Catastrófico"
+                android:textAlignment="center"
+                android:textColor="#FFFFFF"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:autoSizeTextType="uniform" />
+
+        </LinearLayout>
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
