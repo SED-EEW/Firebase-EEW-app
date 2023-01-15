@@ -18,11 +18,11 @@
  *                                                                            *
  ******************************************************************************/
 /**
-*
-* This is the first activity and it is the controller for the activity_layout.
-* It loads the events from the DB and uses the EqCursorAdapter to set the events
-* on the scrollview that has the activity_layout.
-* */
+ *
+ * This is the first activity and it is the controller for the activity_layout.
+ * It loads the events from the DB and uses the EqCursorAdapter to set the events
+ * on the scrollview that has the activity_layout.
+ * */
 
 package com.bbr.attacapp.mainactivity;
 
@@ -302,8 +302,8 @@ public class MainActivity extends AppCompatActivity {
         // new Util.ExportDatabaseCSVTask(getApplicationContext()).execute();
 
         /*
-        * Topic Subscriptions!
-        */
+         * Topic Subscriptions!
+         */
 
         //all the alerts are public through this topic.
         util.FCMSubscribeTopic("attacalerts");
@@ -316,10 +316,10 @@ public class MainActivity extends AppCompatActivity {
         //util.FCMSubscribeTopic("alerttest");
 
         /*
-        *
-        * UNSUBSCRIBE TOPICS!!
-        *
-        * */
+         *
+         * UNSUBSCRIBE TOPICS!!
+         *
+         * */
 
         //Unsubscribe according to your release or usage
         util.FCMUnsubscribeTopic("attactest");

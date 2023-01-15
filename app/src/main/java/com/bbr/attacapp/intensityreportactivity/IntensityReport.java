@@ -18,11 +18,11 @@
  *                                                                            *
  ******************************************************************************/
 /**
-* This class is the Controller for Intensity Report Layout.
-* It loads the cartoons and allows user to choose an intensity
-* value based on these.
-*
-* */
+ * This class is the Controller for Intensity Report Layout.
+ * It loads the cartoons and allows user to choose an intensity
+ * value based on these.
+ *
+ * */
 
 
 package com.bbr.attacapp.intensityreportactivity;
@@ -525,6 +525,7 @@ public class IntensityReport extends AppCompatActivity implements View.OnClickLi
         });
     }
 
+    @SuppressLint("MissingPermission")
     private void getCurrentGPSLocation() {
 
         getLoc();

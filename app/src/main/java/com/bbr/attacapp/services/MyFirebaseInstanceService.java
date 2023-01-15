@@ -186,13 +186,22 @@ public class MyFirebaseInstanceService extends FirebaseMessagingService {
         //Saving in
         //Intensity estimation
         try{
-            String location = eq.getLocation();
-            float epicentralDist = Float.parseFloat(location.split(" ")[0]);
-            eq.setIntestimated(util.ipe_allen2012_hyp(epicentralDist,eq.getMagnitude(),eq.getDepth()));
-
-        } catch (Exception e) {
+            Log.d(TAG, "Estimating the intensity MM to the nearest place....");
+            int tmpVal = util.ipe_allen2012_hyp(eq.getNearPlaceDist(), eq.getMagnitude(), eq.getDepth() );
+            eq.setIntestimated( tmpVal );
+            Log.d(TAG, "Estimated Val= "+tmpVal);
+        }catch (Exception e) {
             e.printStackTrace();
-            eq.setIntestimated(-1);
+            Log.e(TAG, "There is no distance value of the nearest location");
+            try{
+                Log.d(TAG, "getting the intensity estimation from near location description");
+                String location = eq.getLocation();
+                float epicentralDist = Float.parseFloat(location.split(" ")[0]);
+                eq.setIntestimated(util.ipe_allen2012_hyp(epicentralDist,eq.getMagnitude(),eq.getDepth()));
+            }catch (Exception err){
+                Log.e(TAG, "Not possible to obtain the distance from near location description. Setting estimated intensity to -1");
+                eq.setIntestimated(-1);
+            }
         }
 
         //Now and Origin Time for
@@ -200,11 +209,20 @@ public class MyFirebaseInstanceService extends FirebaseMessagingService {
         //a notification.
         double now = 0;
         try{
+            Log.d(TAG, "Getting the time from TrueTime....");
             now = util.getUnixTimestampFromTrueTime();
+            Log.d(TAG,"TrueTime timestamp ms : "+ now);
         }catch (Exception e){
             Log.e(TAG,"There was an error getting the truetime time: "+e.toString());
-            Log.e(TAG,"Getting from device");
-            now = util.utcNowTimestampmsecs();
+            Log.e(TAG,"Getting from NTP Server");
+            try{
+                now = util.getUnixTimestampFromNTP();
+            }catch (Exception er){
+                Log.e(TAG,"There was an error getting the NTP time: "+e.toString());
+                Log.e(TAG,"Last Option. Getting from this device...");
+                now = util.utcNowTimestampmsecs();
+            }
+
         }
 
         int evtOrTime = eq.getOrTime();
@@ -271,7 +289,7 @@ public class MyFirebaseInstanceService extends FirebaseMessagingService {
 
         boolean notiSilently = false;
 
-       if ( magNotif ) {
+        if ( magNotif ) {
             Log.d(TAG, "Alert based on Magnitude.");
             Log.d(TAG, "Evaluating the magnitude notification thresholds...");
             int prefMaxDepth = util.readPrefIntDepth(getApplicationContext(), "prefMaxDepthNoti", "default");
@@ -284,14 +302,12 @@ public class MyFirebaseInstanceService extends FirebaseMessagingService {
 
             if (prefAgency.toUpperCase().equals("ALL")) {
                 if (eqMag < prefMinMag || eqDepth > prefMaxDepth) {
-                    Log.d(TAG, "No notification for this alert:" + eq.getMagnitude() + ", " + eq.getDepth());
-                    Log.i(TAG, "mag:" + eqMag + " " + prefMinMag + " " + eqDepth + " " + prefMaxDepth + " " + prefAgency);
+                    Log.d(TAG, "No notification for this alert: EqMag = " + eq.getMagnitude() + ", EqDepth = " + eq.getDepth());
                     notiSilently = true;
                 }
             } else {
                 if (eqMag <= prefMinMag || eqDepth >= prefMaxDepth || !prefAgency.toUpperCase().equals(agency)) {
-                    Log.d(TAG, "No notification for this alert:" + eq.getMagnitude() + ", " + eq.getDepth() + ", " + eq.getAgency());
-                    Log.i(TAG, "mag:" + eqMag + " " + prefMinMag + " " + eqDepth + " " + prefMaxDepth + " " + prefAgency);
+                    Log.d(TAG, "No notification for this alert: EqMag = " + eq.getMagnitude() + ", EqDepth = " + eq.getDepth());
                     notiSilently = true;
                 }
             }
@@ -300,7 +316,7 @@ public class MyFirebaseInstanceService extends FirebaseMessagingService {
         //Notification
         NotificationManager notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
 
-       //Three channels to notify:
+        //Three channels to notify:
         //First one is for alerting with voice message
         String NOTIFICATION_CHANNEL_ID1 = "com.bbr.attacalert1";
 
@@ -321,8 +337,8 @@ public class MyFirebaseInstanceService extends FirebaseMessagingService {
         boolean alert = false;
         int remainingSeconds= -999;
         /*Strong shake is a flag in case of a defined intensity value is reached
-        * If so, then an specific layout will show up to the client when it clicks
-        * in the notification*/
+         * If so, then an specific layout will show up to the client when it clicks
+         * in the notification*/
         boolean strongShake = false;
 
         if( intAlert ){
@@ -416,7 +432,7 @@ public class MyFirebaseInstanceService extends FirebaseMessagingService {
             uri = Uri.parse("android.resource://"+this.getPackageName()+"/"+ R.raw.notificationsismo);
             notificationBuilder = new NotificationCompat.Builder(this,NOTIFICATION_CHANNEL_ID1);
 
-            notificationBuilder.setColor(Color.RED);
+
             notificationBuilder.setColorized(true);
 
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O)
@@ -473,7 +489,7 @@ public class MyFirebaseInstanceService extends FirebaseMessagingService {
                     Log.e(TAG,"Error deleting a notification for channel ID2. See below...");
                     Log.e(TAG,e.toString());
                 }
-               notificationChannel = new NotificationChannel(NOTIFICATION_CHANNEL_ID3,NOTI_CATEGORY__ALERT_SILENTLY,
+                notificationChannel = new NotificationChannel(NOTIFICATION_CHANNEL_ID3,NOTI_CATEGORY__ALERT_SILENTLY,
                         NotificationManager.IMPORTANCE_DEFAULT);
             }
         }
@@ -510,6 +526,7 @@ public class MyFirebaseInstanceService extends FirebaseMessagingService {
             //Changing the alert message!!!
             notificationBuilder.setContentTitle(getString(R.string.dropcoverholdon));
             //notificationBuilder.setContentText();
+            notificationBuilder.setColor(Color.RED);
         }else{
             Log.d(TAG," Not strong shake or it is too late to notify with voice or sound..." );
             i = new Intent(this, EqActivity.class);

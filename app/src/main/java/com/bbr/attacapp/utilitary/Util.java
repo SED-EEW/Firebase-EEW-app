@@ -127,22 +127,28 @@ public class Util {
 
                     }
                 });
-        //This will contain a list of topics that are used
-        //FirebaseMessaging.getInstance().unsubscribeFromTopic("alerttest");
-        //FirebaseMessaging.getInstance().unsubscribeFromTopic("attactest");
-        //FirebaseMessaging.getInstance().unsubscribeFromTopic("inetertest");
 
 
     }
 
     /*Method to subscribe to Firebase Push Notification to a specific topic*/
     public void FCMUnsubscribeTopic(String topic){
-        FirebaseMessaging.getInstance().unsubscribeFromTopic(topic);
+        FirebaseMessaging.getInstance().unsubscribeFromTopic(topic).addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+                String msg = "Unsubscribed to topic: "+topic;
+                if (!task.isSuccessful()) {
+                    msg = "Not Unsubscribed";
+                }
+
+                Log.d(TAG, msg);
+            }
+        });
     }
 
 
     /*Public method to convert unix timestamp in int type to
-    * string in ISO8601 format without milliseconds*/
+     * string in ISO8601 format without milliseconds*/
     public String utcTimestamp2localISO8601( int timestamp ){
         //Unix seconds
         if (timestamp < 0){
@@ -252,7 +258,7 @@ public class Util {
         EqInfo eqInfo = null;
 
         if( eqArr.length == 18 ){
-             eqInfo = new EqInfo(eqArr[0],Float.valueOf(eqArr[1]),Float.valueOf(eqArr[2]),
+            eqInfo = new EqInfo(eqArr[0],Float.valueOf(eqArr[1]),Float.valueOf(eqArr[2]),
                     Float.valueOf(eqArr[3]),Float.valueOf(eqArr[4]),Float.valueOf(eqArr[5]),Integer.valueOf(eqArr[6]),Long.valueOf(eqArr[16]),
                     recTime,eqArr[9],eqArr[10],eqArr[11],eqArr[12],eqArr[13],eqArr[14],Integer.valueOf(eqArr[15]),Integer.valueOf(eqArr[17]));
 
@@ -267,11 +273,11 @@ public class Util {
 
 
     /* using the Origin Time  (int type) obtains the
-    * time span from that moment to now
-    * in a format:
-    * XX days, XX hours, XX minutes, XX seconds
-    * in Spanish )_(
-    * */
+     * time span from that moment to now
+     * in a format:
+     * XX days, XX hours, XX minutes, XX seconds
+     * in Spanish )_(
+     * */
 
     public String getTimeSpanFromNow(int orTime){
         int now = utcNowTimestamp();
@@ -308,8 +314,8 @@ public class Util {
     }
 
     /*
-    * Returns the difference in seconds from the origin time to NOW!
-    * */
+     * Returns the difference in seconds from the origin time to NOW!
+     * */
     public int getTimespanFromNowSeconds(int ortime){
         int now =utcNowTimestamp();
         int diff = now - ortime;
@@ -317,7 +323,7 @@ public class Util {
     }
 
     /*to set user's preference values
-    * it needs the contexts from the activity or fragment where this is called*/
+     * it needs the contexts from the activity or fragment where this is called*/
     public void setPreferences(Context context, String prefTitle, String prefValue, String prefType){
         SharedPreferences myPrefs = context.getSharedPreferences("ConfigOptions", Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = myPrefs.edit();
@@ -385,10 +391,10 @@ public class Util {
 
 
     /*
-    *
-    * PREFERENCE VALUES SET BY USERS THROUGH SETTINGS ACTIVITY
-    *
-    * */
+     *
+     * PREFERENCE VALUES SET BY USERS THROUGH SETTINGS ACTIVITY
+     *
+     * */
     public int readPrefIntDepth(Context context, String prefkey, String typePref) {
         SharedPreferences myPrefs = null;
         if (typePref.equals("default")){
@@ -470,8 +476,8 @@ public class Util {
         int val = Integer.valueOf(myPrefs.getString(prefkey,"30"));
         return val;
     }
-         /* END OF USER PREFERENCE VALUES*/
-        //////////////////////////////////
+    /* END OF USER PREFERENCE VALUES*/
+    //////////////////////////////////
 
     // RANDOM STRINGS is to generate a random alphanumeric string
     // with the defined len stablished in the input variable
@@ -511,7 +517,7 @@ public class Util {
         File file;
         String data = "";
         public ExportDatabaseCSVTask(Context context){
-           // dialog = new ProgressDialog(context);
+            // dialog = new ProgressDialog(context);
             this.context = context;
         }
 
@@ -553,17 +559,17 @@ public class Util {
                     curCSV = mEqDbHelper.getDataFromUnixtimeEqs(lastUpdate);
                 }
 
-              //  csvWrite.writeNext(curCSV.getColumnNames());
+                //  csvWrite.writeNext(curCSV.getColumnNames());
 
                 while (curCSV.moveToNext()) {
                     data += curCSV.getString(0)+","+curCSV.getString(1)+","+ curCSV.getString(2)+","+curCSV.getString(3)+","+curCSV.getString(4)+","+curCSV.getString(5)+","+curCSV.getString(6)+","+curCSV.getString(7)+","+
                             curCSV.getString(8)+","+curCSV.getString(9)+","+curCSV.getString(10)+","+curCSV.getString(11)+","+curCSV.getString(12)+","+
                             curCSV.getString(13)+","+curCSV.getString(14)+","+curCSV.getString(15)+","+curCSV.getString(16)+","+curCSV.getString(17)+","+curCSV.getString(18);
                     String arrStr[] = {curCSV.getString(1), curCSV.getString(2),
-                                               curCSV.getString(3),curCSV.getString(4),curCSV.getString(5),curCSV.getString(6),curCSV.getString(7),
-                                              curCSV.getString(8),curCSV.getString(9),curCSV.getString(10),curCSV.getString(11),curCSV.getString(12),
-                                             curCSV.getString(13),curCSV.getString(14),curCSV.getString(15),curCSV.getString(16),curCSV.getString(17),curCSV.getString(18),curCSV.getString(19)};
-                     //curCSV.getString(3),curCSV.getString(4)//};
+                            curCSV.getString(3),curCSV.getString(4),curCSV.getString(5),curCSV.getString(6),curCSV.getString(7),
+                            curCSV.getString(8),curCSV.getString(9),curCSV.getString(10),curCSV.getString(11),curCSV.getString(12),
+                            curCSV.getString(13),curCSV.getString(14),curCSV.getString(15),curCSV.getString(16),curCSV.getString(17),curCSV.getString(18),curCSV.getString(19)};
+                    //curCSV.getString(3),curCSV.getString(4)//};
                     csvWrite.writeNext(arrStr);
                     data +="\n";
                 }
@@ -609,22 +615,22 @@ public class Util {
     /**/
     public void displayAlertDialogAbout(Context context, String title, String body) {
         String message = context.getString(R.string.aboutapp);
-      //String message = "<h2>ATTAC Alerta Temprana de Terremotos.</h2>\n" +
-      //           "<p style=\"text-align: justify;\">Alerta Temprana de Terremotos en América Central (ATTAC) es un proyecto conjunto de los Centros Sismológicos de:</p>\n" +
-      //        "<ul style=\"text-align: justify;\">\n" +
-      //        "<li>INETER, Nicaragua.</li>\n" +
-      //        "<li>OVSICORI-UNA, Costa Rica.</li>\n" +
-      //        "<li>MARN, El Salvador.</li>\n" +
-      //        "<li>INSIVUMEH, Guatemala.</li>\n" +
-      //        "<li>Swiss Seismological Service, Suiza.</li>\n" +
-      //        "</ul>\n" +
-      //        "<p style=\"text-align: justify;\">Esta Aplicación Móvil tiene como fin presentar las alertas emitidas por estos centros sismológicos en una primera etapa de PRUEBA.</p>\n" +
-      //        "<p style=\"text-align: justify;\">La información presentada podría contener errores o tener algún retrazo en ser recibida o definitivamente no ser recibida por la App.</p>\n" +
-      //        "<p style=\"text-align: justify;\">Durante la etapa de prueba la app enviará datos relacionados a tiempos de recepción de las alertas y otros parámetros para conocer el funcionamiento de la misma y se puedan hacer mejoras. No se enviará ningún dato personal (imagen ni texto) o que no esté relacionado con la app y su contexto.</p>\n" +
-      //        "<p style=\"text-align: justify;\">Para reportar la Intensidad (lo que sintió y/o vio) se le pedirá compartir su ubicación. Importante indicar que la ubicacion que se usa es la <b>aproximada</b> y no es la precisa.</p>\n"+
-      //        "<p style=\"text-align: justify;\">Créditos a \"European-Mediterranean Seismological Centre\" (EMSC) por los Pictogramas que describen el valor de Intensidad.</p>\n"+
-      //        "<p style=\"text-align: justify;\">Consultas y sugerencias a billyburgoa@gmail.com</p>\n"+
-      //        "<p style=\"text-align: left;\"> Versión: <strong>"+APP_VERSION+"</strong></p>" ;
+        //String message = "<h2>ATTAC Alerta Temprana de Terremotos.</h2>\n" +
+        //           "<p style=\"text-align: justify;\">Alerta Temprana de Terremotos en América Central (ATTAC) es un proyecto conjunto de los Centros Sismológicos de:</p>\n" +
+        //        "<ul style=\"text-align: justify;\">\n" +
+        //        "<li>INETER, Nicaragua.</li>\n" +
+        //        "<li>OVSICORI-UNA, Costa Rica.</li>\n" +
+        //        "<li>MARN, El Salvador.</li>\n" +
+        //        "<li>INSIVUMEH, Guatemala.</li>\n" +
+        //        "<li>Swiss Seismological Service, Suiza.</li>\n" +
+        //        "</ul>\n" +
+        //        "<p style=\"text-align: justify;\">Esta Aplicación Móvil tiene como fin presentar las alertas emitidas por estos centros sismológicos en una primera etapa de PRUEBA.</p>\n" +
+        //        "<p style=\"text-align: justify;\">La información presentada podría contener errores o tener algún retrazo en ser recibida o definitivamente no ser recibida por la App.</p>\n" +
+        //        "<p style=\"text-align: justify;\">Durante la etapa de prueba la app enviará datos relacionados a tiempos de recepción de las alertas y otros parámetros para conocer el funcionamiento de la misma y se puedan hacer mejoras. No se enviará ningún dato personal (imagen ni texto) o que no esté relacionado con la app y su contexto.</p>\n" +
+        //        "<p style=\"text-align: justify;\">Para reportar la Intensidad (lo que sintió y/o vio) se le pedirá compartir su ubicación. Importante indicar que la ubicacion que se usa es la <b>aproximada</b> y no es la precisa.</p>\n"+
+        //        "<p style=\"text-align: justify;\">Créditos a \"European-Mediterranean Seismological Centre\" (EMSC) por los Pictogramas que describen el valor de Intensidad.</p>\n"+
+        //        "<p style=\"text-align: justify;\">Consultas y sugerencias a billyburgoa@gmail.com</p>\n"+
+        //        "<p style=\"text-align: left;\"> Versión: <strong>"+APP_VERSION+"</strong></p>" ;
         String button1String = "Ok";
         String button2String = "No";
 
@@ -637,7 +643,7 @@ public class Util {
                 button1String,
                 new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int arg1) {
-                       // new Util.ExportDatabaseCSVTask(context).execute();
+                        // new Util.ExportDatabaseCSVTask(context).execute();
                     }
                 }
         );
@@ -801,8 +807,8 @@ public class Util {
     }
 
     /*Intensity value from epicentral distance, magnitude and depth values.
-    * This was
-    * */
+     * This was
+     * */
     public int ipe_allen2012_hyp(float epiDistance, float magnitude, float depth){//hypoDistance km
         double a = 2.085;
         double b = 1.428;
@@ -831,13 +837,13 @@ public class Util {
     }
 
     /*Gettng the Roman Description from intensity value.
-    * This goes from -1 which is nothing (--) to 12 which is
-    * catastrophic (XII).
-    * It also returns the color that belongs to a defined intensity value.
-    * When this method is called then returned value is a string that needs to be
-    * splitted using the regexp ;
-    *
-    * */
+     * This goes from -1 which is nothing (--) to 12 which is
+     * catastrophic (XII).
+     * It also returns the color that belongs to a defined intensity value.
+     * When this method is called then returned value is a string that needs to be
+     * splitted using the regexp ;
+     *
+     * */
 
     public String intensity2RomanDescription(int intensity){
         //TODO: Implement this in Strings.xml
@@ -963,7 +969,7 @@ public class Util {
     }
 
     /*Distance between two points. This is generally from
-    * the epicenter to some place (near location, user's location, etc)*/
+     * the epicenter to some place (near location, user's location, etc)*/
     public int distanceTwoPoints(double epiLat, double epiLon, double lat, double lon){
         double rEpiLat = Math.toRadians(epiLat);
         double rEpiLon = Math.toRadians(epiLon);
@@ -991,8 +997,8 @@ public class Util {
     }
 
     /*
-    * Location Request - instanced object to be returned
-    * */
+     * Location Request - instanced object to be returned
+     * */
     public LocationRequest createLocationRequest() {
         LocationRequest locationRequest;
         locationRequest = LocationRequest.create();
@@ -1117,9 +1123,9 @@ public class Util {
     }
 
     /*Getting the user's location from SharedPreferences
-    * It returns a List that contains objects.
-    * To obtain defined object, once the list is returned,
-    * is mandatory to cast the type of object.*/
+     * It returns a List that contains objects.
+     * To obtain defined object, once the list is returned,
+     * is mandatory to cast the type of object.*/
     public List<Object> getUserLocation(SharedPreferences mySharedPref){
         double lat =  Double.longBitsToDouble(mySharedPref.getLong("userLat", 0));
         double lon =  Double.longBitsToDouble(mySharedPref.getLong("userLon", 0));
@@ -1136,7 +1142,7 @@ public class Util {
     }
 
     /*Setting the user's POI based on the poiNumber.
-    * In order to know the max POI value then go to UserPOI class*/
+     * In order to know the max POI value then go to UserPOI class*/
     public void setUserPOI(SharedPreferences sharedPreferences, LatLng latLng, int poiNumber,String name){
         Log.d(TAG,"Saving -> name: "+name+", lat: "+latLng.latitude + ", lon: "+latLng.longitude );
         SharedPreferences.Editor editor = sharedPreferences.edit();
@@ -1177,7 +1183,7 @@ public class Util {
     }
 
     /*It checks if the intensity threshold value was reached.
-    * if so, then it returns true, otherwise, false*/
+     * if so, then it returns true, otherwise, false*/
     public boolean alert(LatLng userLatLon, LatLng epiLatLon, float mag, float depth){
         float distance = distanceTwoPoints(epiLatLon.latitude, epiLatLon.longitude, userLatLon.latitude, userLatLon.longitude);
         int intensity = ipe_allen2012_hyp( distance, mag, depth );
@@ -1193,7 +1199,7 @@ public class Util {
     }
 
     /*Travel time for S wave, using an aproximate velocity value to some location.
-    * this uses the hypocentral distance*/
+     * this uses the hypocentral distance*/
     public int travelTimeVs(LatLng userLatLon, LatLng epiLatLon, float depth){
 
         float distance = distanceTwoPoints(epiLatLon.latitude, epiLatLon.longitude, userLatLon.latitude, userLatLon.longitude);
@@ -1256,7 +1262,7 @@ public class Util {
     }
 
     /*It returns the Intensity Value, Description and color for a defined location.
-    * The location can be  user's location if enabled, POIs or near location*/
+     * The location can be  user's location if enabled, POIs or near location*/
     public List<Object> getIntensityDescAndColor(SharedPreferences sharedPreference, float epiLat,
                                                  float epiLon, float depth, float magnitude,
                                                  int eqDist, String evtid, boolean locationEnabled )
