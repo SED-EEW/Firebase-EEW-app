@@ -68,6 +68,7 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.AdapterView;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -136,6 +137,7 @@ public class MainActivity extends AppCompatActivity {
     private FloatingActionButton fabFilter;
     private FloatingActionButton fabLocation;
     private Context context;
+    private LinearLayout lastAlertArea;
 
     private FusedLocationProviderClient fusedLocationClient;
     private LocationRequest locationRequest;
@@ -148,6 +150,7 @@ public class MainActivity extends AppCompatActivity {
     private boolean isGPSEnabled;
     private boolean isNetworkEnabled;
     private boolean firsttime;
+    private String lastEvtId;
 
 
     private final int REQUEST_CHECK_SETTINGS = 0x1;
@@ -198,6 +201,7 @@ public class MainActivity extends AppCompatActivity {
         rotateClose = (Animation) AnimationUtils.loadAnimation(this,R.anim.rotate_close_anim);
         fromBottom = (Animation) AnimationUtils.loadAnimation(this,R.anim.from_bottom_anim);
         toBottom = (Animation) AnimationUtils.loadAnimation(this,R.anim.to_bottom_anim);
+        lastAlertArea = (LinearLayout) findViewById(R.id.lastAlertArea);
 
         util.createVerifierStrings(context);
 
@@ -432,6 +436,27 @@ public class MainActivity extends AppCompatActivity {
                 }else{
                     askPermission();
                 }
+            }
+        });
+
+
+        lastAlertArea.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if( lastEvtId != null ){
+                    if ( lastEvtId.equals("") ){
+                        Log.d(TAG,"last event id is empty ");
+                        return;
+                    }
+                    Log.d(TAG,"Starting eqactivity for event ID: "+ lastEvtId);
+                    Intent i = new Intent(MainActivity.this, EqActivity.class);
+
+                    i.putExtra("evtid", lastEvtId );
+                    startActivity(i);
+                }else{
+                    Log.d(TAG,"No last event yet");
+                }
+
             }
         });
 
@@ -808,6 +833,10 @@ public class MainActivity extends AppCompatActivity {
                     // location
                     String locationVal = cursor.getString(cursor.getColumnIndex(EqContract.EqEntry.LOCATION));
                     location.setText(locationVal);
+
+                    //last event ID
+                    lastEvtId = cursor.getString(cursor.getColumnIndex(EqContract.EqEntry.EVTID));
+                    Log.d(TAG, "setting the new last evt ID : "+ lastEvtId);
 
                     /*breaking here because we want to get the last event*/
                     break;
